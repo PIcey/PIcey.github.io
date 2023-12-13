@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Page</title>
+  <link rel="stylesheet" href="../css/feedback-box.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* Add your styles here if needed */
+    #confirmation-message {
+      display: none;
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="nokey"></canvas>
+  ®
+      <main class="main">
+          <aside class="sidebar">
+              <nav class="nav">
+                  <ul>
+                    <li><a href="../index.html">Welcome</a></li>
+                    <li><a href="../html/form.html" class="noselect">Form</a></li>
+                      <li><a href="../html/about.html">About Me</a></li>
+                      <li><a href="../html/schedule.html">Schedule</a></li>
+                  </ul>
+              </nav>
+          </aside>
+        
+          <section class="twitter">
+              <div class="container">
+                  <a target="_blank" href="https://twitter.com/BulgerJerry">
+                      <img class="social" src="images/702270.png">
+                  </a>
+              </div>
+          </section>
+      </main>
+  
+      <script src="scripts/script.js"></script>
+
+
+
+  <div class="form-container">
+    <section class="formcarry-container">
+        <form action="../process_form.php" method="POST" enctype="multipart/form-data">
+
+        
+      <div class="formcarry-block">
+        <label for="fc-generated-1-email">How does the website look?</label>
+        <input type="email" name="email" id="fc-generated-1-email" placeholder="Scale (1-10)" />
+      </div>
+        
+      <div class="formcarry-block">
+        <label for="fc-generated-1-telephone">Favortive game?</label>
+        <input type="tel" name="telephone" id="fc-generated-1-telephone" placeholder="Currently" />
+      </div>
+        
+      <div class="formcarry-block">
+        <label for="fc-generated-1-people">How is your day going?</label>
+        <select name="people" id="fc-generated-1-people">
+          <option value="" selected disabled>Please select..</option>
+          <option value="Strongly Agree">1 (Trash)</option>
+          <option value="Agree">2 (Ehh) </option>
+          <option value="Neutral">3 (Not too Bad)</option>
+          <option value="Disagree">4 (Pretty Good)</option>
+          <option value="Strongly Disagree">5 (Very Good)</option>
+        </select>   
+      </div>
+        
+      <div class="formcarry-block">
+        <label for="fc-generated-1-additionalFeedback">Additional comments</label>
+        <textarea name="message" name="additionalFeedback" id="fc-generated-1-additionalFeedback" placeholder="Enter your message..."></textarea>
+      </div>
+        
+      <div class="formcarry-block">
+        <button type="button" onclick="submitForm()">Submit</button>
+      </div>
+    </form>
+
+    <!-- Confirmation message -->
+    <div id="confirmation-message">Your form has been submitted successfully.</div>
+  </section>
+</div>
+
+<script>
+ function submitForm() {
+    // Get form data
+    var formData = new FormData(document.querySelector('form'));
+
+    // Make a POST request using Fetch API
+    fetch('../process_form.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        // Display confirmation message
+        document.getElementById('confirmation-message').style.display = 'block';
+      } else {
+        console.error('Form submission failed.');
+      }
+    })
+    .catch(error => console.error('Error during form submission:', error));
+  }
+
+</script>
+</body>
+
+</html>
+  </section>
